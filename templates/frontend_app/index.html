@@ -1,0 +1,190 @@
+{% extends 'frontend_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+  <!--/ Intro Skew Star /-->
+  {% for home in home_list %}
+  <div id="home" class="intro route bg-image" style="background-image: url({{home.background_img.url}})">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+           <h1 class="intro-title mb-3">{{home.name}}</h1>
+          <p class="intro-subtitle"><span class="text-slider-items">{{home.home_desc}}</span><strong class="text-slider"></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!--/ Intro Skew End /-->
+
+  <section id="about" class="about-mf sect-pt4 route">
+    <div class="title-box text-center">
+      <h3 class="title-a">
+      ABOUT ME
+      </h3>
+      <div class="line-mf"></div>
+    </div>
+     <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="box-shadow-full">
+            <div class="row">
+            {% if about_list %}
+                {% for about in about_list %}
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-sm-6 col-md-5">
+                    <div class="about-img">
+                      <img src="{{about.about_img.url}}" class="img-fluid rounded b-shadow-a" alt="">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-7">
+                    <div class="about-info">
+                      <p><span class="title-s">Name: </span> <span class="title-s">{{about.name}}</span></p>
+                      <p><span class="title-s">Profile: </span> <span class="title-s">{{ about.about_desc }}</span></p>
+                      <p><span class="title-s">Email: </span> <span class="title-s">{{about.email}}</span></p>
+                      <p><span class="title-s">Phone: </span> <span class="title-s">{{about.phone_number}}</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-mf">
+                  <p class="title-s text-success text-center"><strong>SKILL KNOWLEDGE</strong></p>
+                  <span>HTML5</span> <span class="pull-right">{{about.HTML5}}</span>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{about.HTML5}}%;" aria-valuenow="{{about.HTML5}}" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <span>CSS3</span> <span class="pull-right">{{about.CSS3}}</span>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{about.CSS3}}%;" aria-valuenow="{{about.CSS3}}" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <span>PYTHON</span> <span class="pull-right">{{about.PYTHON}}</span>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{about.PYTHON}}%;" aria-valuenow="{{about.PYTHON}}" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <span>GIT</span> <span class="pull-right">{{about.GIT}}</span>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{about.GIT}}%;" aria-valuenow="{{about.GIT}}" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="about-me pt-2 pt-md-0">
+                  <div class="title-box-2">
+                    <h5 class="title-left">
+                      BRIEF INTRODUCTION
+                    </h5>
+                  </div>
+                  <span class="lead para">{{about.about_cont | linebreaks}}</span>  
+                </div>
+              </div> 
+              {% endfor %}
+              {% else %}
+              <p>Please Insert Content Here</p>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--/ Section Services Star /-->
+  <section id="qualifications" class="services-mf route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+            qualifications
+            </h3>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% if qualification_list %}
+          {% for qualification in qualification_list %}
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle"><i class="ion-briefcase"></i></span>
+            </div>
+            <div class="service-content">
+              <p class="s-title">{{qualification.qualification_title}}</p>
+              <p class="s-description para lead">{{qualification.qualification_desc}}</p>
+               <a href="static/frontend_app/files/Haruna, Samson Adukwu CV.pdf" target="_blank" class="btn btn-success">Click Here To View More Details</a>
+            </div> 
+
+          </div>
+        </div>
+
+          {% endfor %}
+          {% else %}
+          <p>Please Drop Content Here</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!--/ Section Services End /-->
+
+  <!--/ Section Portfolio Star /-->
+  <section id="work" class="portfolio-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h3 class="title-a">
+              Portfolio
+            </h3>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      {% if portfolio_list %}
+        {% for portfolio in portfolio_list %}
+        <div class="col-md-4">
+          <div class="work-box">
+            <a href="{{portfolio.portfolio_img.url}}" data-lightbox="gallery-mf">
+              <div class="work-img">
+                <img src="{{portfolio.portfolio_img.url}}" alt="" class="img-fluid">
+              </div>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p class="s-description para">{{portfolio.portfolio_title}}</p>
+                    <div class="s-description para">
+                      <p class="s-description para lead">{{portfolio.portfolio_desc}}</p>
+                      <p class="w-date"> {{portfolio.last_edited}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <span class="ion-ios-plus-outline"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Please Insert Content Here</p>
+      {% endif %}
+      </div>
+    </div>
+  </section>
+  <!--/ Section Portfolio End /-->
+    
+{% endblock %}

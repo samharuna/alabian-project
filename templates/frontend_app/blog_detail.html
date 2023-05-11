@@ -1,0 +1,57 @@
+{% extends 'frontend_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block title %}
+Blog Detail
+{% endblock %}
+
+{% block content %}
+<section id="blog" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <div class="line-mf"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--/ Section Blog-Single Star /-->
+  <section class="blog-wrapper " id="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 border border-white bg-dark">
+          <div class="post-box">
+            {% if blog_det %}
+            <h3 class="para">{{ blog_det.blog_desc }}</h3>
+            <div class="post-thumb">
+             <img src="{{ blog_det.blog_img.url }}" alt="" class="img-fluid border border-success">
+            </div>
+            <div class="post-meta">
+              <ul>
+                <li>
+                  <span class="ion-pricetag"></span>
+                  <a href="#">{{ blog_det.category }}</a>
+                </li>
+                <li>
+                  <span class="ion-clock"></span>
+                  <a href="#">{{ blog_det.published_date }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="article-content para lead">
+             <p>{{ blog_det.content | linebreaks }}</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% include 'frontend_app/sidebar.html' %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+   
+{% endblock %}

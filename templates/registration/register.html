@@ -1,0 +1,46 @@
+{% extends 'registration/registration_base.html' %}  
+{% load static %}
+<!DOCTYPE html>
+
+{% block title %}
+Register
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+          {% if messages %}
+             {% for message in messages %}
+             <div class="alert alert-{% if message.tags == 'error' %}Danger{% else %}{{ message.tags }} {% endif %}" role="alert">
+                {{ message }}
+             </div>
+             {% endfor %}
+          {% endif %}
+          
+          <h1>Register</h1>
+        </div>
+        <form method="POST" action="" class="form">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" name="login" class="btn btn-success btn-block" value="Register">
+        </form>
+        <div class="footer">
+          <a href="{% url 'backend_app:login' %}">Login</a>
+          <a href="{% url 'backend_app:password_reset' %}">Forget Password</a>
+        </div>
+        <div class="footer">
+         <a href="{% url 'index' %}" id="back">Back to main site</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+   
+
+
+
+
+   

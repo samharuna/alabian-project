@@ -1,0 +1,59 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+               <div class="post-content">
+                 <h3>View Users</h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th colspan="2">Action</th>
+                  </tr>
+                  {% if list_user %}
+                  {% for key in list_user %}
+                  <tr>
+                    <td>{{ key.user }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ key.first_name }}</td>
+                    <td>{{ key.last_name }}</td>
+                    <td>
+                      <form method="post" action="">
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-danger">
+                          <a href="{% url 'backend_app:delete_user' pk=key.id %}"><i class="fa fa-trash"></i></a>
+                        </button>
+                      </form>
+                    </td>
+                    <td>
+                      <form action="add_user.html">
+                        <button type="button" class="btn btn-success">
+                          <a href="{% url 'backend_app:edit_user' pk=key.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>  
+                  {% endfor %} 
+                  {% endif %} 
+                </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

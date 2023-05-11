@@ -1,0 +1,78 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Dashboard
+{% endblock %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+        
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="{% url 'backend_app:super_user' %}"> 
+                <i class="fa fa-lock"></i> 
+                 <span>{{ super_user_count }}</span>
+                <h4> Super Users</h4>
+               </a>
+             </div>
+            </div>         
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="regular_user/{{ reg_user.id }}"> 
+                <i class="fa fa-users"></i>
+                <span>{{ regular_user_count }}</span>
+                <h4>Regular Users</h4>
+               </a>
+             </div>
+            </div> 
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="{% url 'backend_app:male' %}"> 
+                <i class="fa fa-male"></i> 
+                 <span>{{ male_count }}</span>
+                 <h4> Male</h4>
+                 <span class="little-text">Subscribers</span>
+               </a>
+             </div>
+            </div> 
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="{% url 'backend_app:female' %}"> 
+                <i class="fa fa-female"></i> 
+                <span>{{ female_count }}</span>
+                <h4>Female</h4>
+                <span class="little-text">Subscribers</span>
+               </a>
+             </div>
+            </div> 
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="{% url 'backend_app:list_post' %}"> 
+                <i class="fa fa-pencil-square-o"></i>
+                <span>{{ post_count }}</span>
+                <h4>Posts</h4>
+               </a>
+             </div>
+            </div>
+            <div class="col-sm-2">
+             <div class="inner-box">
+               <a href="{% url 'backend_app:list_category' %}"> 
+                <i class="fa fa-object-group"></i>
+                <span>{{ category_count }}</span>
+                <h4>Categories</h4>
+               </a>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+

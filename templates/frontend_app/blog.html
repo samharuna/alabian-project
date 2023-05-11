@@ -1,0 +1,74 @@
+{% extends 'frontend_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block content %}
+
+
+<section class="banner pt-1">
+  {% for banner in banner_list %}
+  <div class="container">
+    <div class="text-center text-dark bg-white border border-dark font-weight-bold ">
+        <span><font size="8" color="green" face="Agency FB">{{ banner.banner_title }}</font></span><br/>
+        <span><font size="3" face="Arial Black">{{ banner.banner_description }}</font></span>
+    </div>
+
+    <div>
+      <img src="{{ banner.banner_for_blog.url }} " alt=""  class="img-fluid">
+    </div>
+   
+  </div>
+  {% endfor %}
+<div class="container marquee pt-1" >
+{% for marquee in marquee_list %}
+    <marquee behavior="" direction=""><font color="red" size="4" face="Arial Black"><strong>Breaking News:    </strong></font><font size="4" color="white" face="Arial Black">{{ marquee.message }}</font> </marquee>
+{% endfor %}  
+</div>
+</section>
+
+<section id="blog" class="blog-mf sect-pt4 route mt-5">
+  <div class="container">
+    <div class="row">
+    {% if blog_list %}
+      {% for blog in blog_list %}
+      <div class="col-md-4 bg-white">
+        <div class="card card-blog border border-success">
+          <div class="card-img">
+             <a href="blog_detail/{{ blog.id }}">
+            <img src="{{ blog.blog_img.url }}" alt="Blog Image" class="img-fluid"></a>
+          </div>
+          <div class="card-body">
+            <div class="card-category-box">
+              <div class="card-category">
+                <h2 class="category">{{ blog.category }}</h2>
+              </div>
+            </div>
+            <p class="card-title para lead">{{ blog.blog_desc }}      <a href="blog_detail/{{ blog.id }}" class="readmore btn btn-success"><strong>Readmore</strong></a></p>  
+          </div>
+            <div class="card-footer">
+            <div class="post-author">
+              <a href="#">
+                <img src="{{ blog.author_image.url }}" alt="" class="avatar rounded-circle">
+                <span class="author"> {{ blog.blog_author }}</span>
+              </a>
+            </div>
+            <div class="post-date">
+              <span class="ion-ios-clock-outline">{{ blog.published_date }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      {% endfor %}
+      {% else %}
+      <p>No Blog Content Please</p>
+    {% endif %}
+    </div>
+  </div>
+</section>
+<!--/ Section Blog End /-->
+{% endblock %}

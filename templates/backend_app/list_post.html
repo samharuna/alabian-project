@@ -1,0 +1,59 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+               <div class="post-content">
+                 <h3>View Post</h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Post Title</th>
+                    <th>Post Category</th>
+                    <th>Post Content</th>
+                    <th colspan="2">Action</th>
+                  </tr>
+                  {% if list_post %}
+                  {% for key in list_post %}
+                  <tr>
+                      <td>{{ key.post_title }}</td>
+                      <td>{{ key.category }}</td>
+                      <div class="para">
+                        <td><p>{{ key.content | linebreaks }}</p></td>
+                      </div>
+                      <td>
+                        <form method="post" action="">
+                          {% csrf_token %}
+                          <button type="button" class="btn btn-danger">
+                            <a href="{% url 'backend_app:delete_post' pk=key.id %}"><i class="fa fa-trash"></i></a>
+                          </button>
+                        </form>
+                      </td>
+                      <td>
+                        <form action="add_post.html">
+                          <button type="button" class="btn btn-success">
+                            <a href="{% url 'backend_app:edit_post' pk=key.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                          </button>
+                       </form>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                  {% endif %}
+                </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+          
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                 <div class="post-content">
+                   <h3>Regular Users</h3>
+                   <table class="table table-bordered">
+                     <tr>
+                       <th>Firstname</th>
+                       <th>Lastname</th>
+                       <th>Role</th>
+                 
+                     </tr>
+                     {% if regular_user %}
+                     {% for key in regular_user %}
+                     <tr>
+                       <td>{{ key.first_name }}</td>
+                       <td>{{ key.last_name }}</td>
+                       <td>{{ key.role }}</td>
+                     </tr>  
+                     {% endfor %}
+                     {% endif %} 
+                   </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

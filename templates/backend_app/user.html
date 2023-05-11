@@ -1,0 +1,54 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+          
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+               <div class="post-content">
+                  <h3>
+                  {% if not form.instance.pk %}
+                  User
+                  {% else %}
+                  Edit User
+                  {% endif %}
+                  </h3>
+                  {{ form.media }}
+
+                  {% if messages %}
+                     {% for message in messages %}
+                     <div class="alert alert-{% if message.tags == 'error' %}Danger{% else %}{{ message.tags }} {% endif %}" role="alert">
+                        {{ message }}
+                     </div>
+                     {% endfor %}
+                  {% endif %}
+
+                 <form method="POST" action="" class="form" enctype="multipart/form-data">
+                    {{ form|crispy }}
+                    {% csrf_token %}
+                    {% if not form.instance.pk %}
+                      
+                      <input type="submit" name="login" class="btn btn-success btn-block" value="Create User">
+                    {% else %}
+                        <input type="submit" name="login" class="btn btn-success btn-block" value="Edit User">
+                    {% endif %}
+    
+                 </form>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

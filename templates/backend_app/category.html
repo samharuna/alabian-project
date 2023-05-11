@@ -1,0 +1,43 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+          
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+               <div class="post-content">
+                <h3>
+                  {% if not form.instance.pk %}
+                  Category
+                  {% else %}
+                  Edit Category
+                  {% endif %}
+                </h3>
+                  {{ form.media }}
+                 <form method="post" action="" enctype="multipart/form-data">
+                    {{ form|crispy }}
+                    {% csrf_token %}
+                    {% if not form.instance.pk %}
+                      <input type="submit" class="btn btn-success btn-block" value="Create Category">
+                    {% else %}
+                      <input type="submit" class="btn btn-success btn-block" value="Edit Category">
+                    {% endif %}
+                 </form>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

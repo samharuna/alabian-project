@@ -1,0 +1,57 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                  Users</a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="nav">
+                    <li><a href="{% url 'backend_app:user' %}">Add Users</a></li>
+                    <li><a href="{% url 'backend_app:list_user' %}">View Users</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                 <div class="post-content">
+                   <h3>Male Subscribers</h3>
+                   <table class="table table-bordered">
+                     <tr>
+                       <th>Firstname</th>
+                       <th>Lastname</th>
+                       <th>Gender</th>
+                 
+                     </tr>
+                     {% if male %}
+                     {% for key in male %}
+                     <tr>
+                       <td>{{ key.first_name }}</td>
+                       <td>{{ key.last_name }}</td>
+                       <td>{{ key.sex }}</td>
+                     </tr>  
+                     {% endfor %} 
+                     {% endif %} 
+                   </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

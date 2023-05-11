@@ -1,0 +1,52 @@
+{% extends 'backend_app/backend_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% block title %}
+Admin
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                  Users</a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="nav">
+                    <li><a href="{% url 'backend_app:user' %}">Add User</a></li>
+                    <li><a href="{% url 'backend_app:list_user' %}">View Users</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9" id="admin-main-content">
+          <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+               <div class="post-content">
+                  <h3>
+                   Do you want to Delete this User?
+                  </h3>
+                 <form method="post" action="" class="form" enctype="multipart/form-data">
+                   {% csrf_token %}
+                   
+                   {{ form|crispy }}
+                   
+                       <input type="submit" name="login" class="btn btn-danger btn-block" value="Yes">
+                       <a href="{% url 'backend_app:list_user' %}"><input type="" class="btn btn-success btn-block" value="No"></a>
+                  
+                 </form>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

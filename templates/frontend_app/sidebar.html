@@ -1,0 +1,73 @@
+
+ <div class="col-md-4">
+    <div class="widget-sidebar sidebar-search">
+      <h5 class="sidebar-title">Search</h5>
+      <div class="sidebar-content">
+        
+        <form class="form-inline my-2 my-lg-2">
+          <div class="input-group">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Search" name="search" value="{{ search_term }}">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary btn-search" type="submit">
+                <span class="ion-android-search"></span>
+              </button>
+            </span>
+          </div>
+        </form>
+
+      </div>
+    </div>  
+
+    <div class="widget-sidebar">
+        <h5 class="sidebar-title">Menu</h5>
+          <div class="sidebar-content">
+              <ul class="list-sidebar">
+
+                <li class="nav-item">
+                  <a class="nav-link js-scroll active" href="{% url 'index' %}#home">HOME</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link js-scroll" href="{% url 'index' %}#about">ABOUT ME</a>
+                </li>
+                    
+                <li class="nav-item">
+                  <a class="nav-link js-scroll" href="{% url 'index' %}#qualifications">QUALIFICATIONS</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link js-scroll" href="{% url 'index' %}#work">PORTFOLIO</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link js-scroll" href="{% url 'frontend_app:blog' %}">BLOG</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link js-scroll" href="{% url 'index' %}#contact">CONTACT</a>
+                </li>
+              </ul>
+        </div>
+    </div>
+
+     <div class="widget-sidebar widget-tags">
+            <h5 class="sidebar-title">Tags</h5>
+            <div class="sidebar-content">
+              <ul>
+                <li>
+                  <a href="https://alabiansolutions.com/web-development/">Software Development</a>
+                </li>
+                <li>
+                  <a href="https://alabiansolutions.com/webtraining/">PHP</a>
+                </li>
+                <li>
+                  <a href="https://alabiansolutions.com/javascript-development-training/">JavaScript</a>
+                </li>
+                <li>
+                  <a href="https://alabiansolutions.com/graphics-design/">Graphic Design</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  </div>
+  
